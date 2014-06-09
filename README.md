@@ -4,6 +4,12 @@ Python Client (CPython 2.7, 3.4; pypy 2.7) for the RJMetrics Import API
 
 [Import API](http://developers.rjmetrics.com/api.html)
 
+Install:
+
+```
+pip install git+ssh://git@github.com/g-k/RJMetrics-py.git
+```
+
 ### License
 
    Copyright 2014 RJMetrics Inc.
