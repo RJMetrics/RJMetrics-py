@@ -7,7 +7,7 @@ Python Client (CPython 2.7, 3.4; pypy 2.7) for the RJMetrics Import API
 Install:
 
 ```
-pip install git+ssh://git@github.com/g-k/RJMetrics-py.git
+pip install git+ssh://git@github.com/RJMetrics/RJMetrics-py.git
 ```
 
 ### License
