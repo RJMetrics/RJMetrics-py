@@ -83,10 +83,12 @@ class Client(object):
 
         url = Client._url(base_url, self.client_id, table_name, self.api_key)
 
+        headers = {'Content-Type': 'application/json'}
+        
         posts = []
         for batch in grouper(data, Client._BATCH_SIZE):
             batch = [x for x in batch if x != None]
-            posts.append(requests.post(url, data=batch))
+            posts.append(requests.post(url, data=batch, headers=headers))
 
         return posts
 
