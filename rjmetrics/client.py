@@ -1,5 +1,6 @@
 
 import sys
+import json
 
 import requests
 
@@ -88,7 +89,7 @@ class Client(object):
         posts = []
         for batch in grouper(data, Client._BATCH_SIZE):
             batch = [x for x in batch if x != None]
-            posts.append(requests.post(url, data=batch, headers=headers))
+            posts.append(requests.post(url, data=json.dumps(batch), headers=headers))
 
         return posts
 
