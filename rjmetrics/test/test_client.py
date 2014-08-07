@@ -1,5 +1,6 @@
 
 import itertools
+import json
 import sys
 import unittest
 
@@ -10,6 +11,7 @@ from rjmetrics.client import Client
 
 API_KEY = 'test-api-key'
 CLIENT_ID = 12
+JSON_HEADER = {'Content-Type': 'application/json'}
 
 
 class TestClientInit(unittest.TestCase):
@@ -45,7 +47,8 @@ class TestClient(unittest.TestCase):
         mock_post.assert_called_once_with(
             'https://sandbox-connect.rjmetrics.com/v2/'
             'client/12/table/test/data?apikey=test-api-key',
-            data=Client._AUTH_TEST_DATA)
+            data=json.dumps(Client._AUTH_TEST_DATA),
+            headers=JSON_HEADER)
 
     @mock.patch('requests.post')
     def test_authenticate_fails_on_unauthorized(self, mock_post):
@@ -56,7 +59,8 @@ class TestClient(unittest.TestCase):
         mock_post.assert_called_once_with(
             'https://sandbox-connect.rjmetrics.com/v2/'
             'client/12/table/test/data?apikey=test-api-key',
-            data=Client._AUTH_TEST_DATA)
+            data=json.dumps(Client._AUTH_TEST_DATA),
+            headers=JSON_HEADER)
 
 
     ## push_data
@@ -81,7 +85,8 @@ class TestClient(unittest.TestCase):
         mock_post.assert_called_once_with(
             'https://sandbox-connect.rjmetrics.com/v2/'
             'client/12/table/test/data?apikey=test-api-key',
-            data=test_data)
+            data=json.dumps(test_data),
+            headers=JSON_HEADER)
 
     @mock.patch('requests.post')
     def test_push_data_many_batches(self, mock_post):
@@ -96,7 +101,11 @@ class TestClient(unittest.TestCase):
             'client/12/table/test/data?apikey=test-api-key'
 
         self.assertEqual(mock_post.call_args_list[0],
-                         mock.call(expected_url, data=test_data[0:Client._BATCH_SIZE]))
+                         mock.call(expected_url,
+                                   data=json.dumps(test_data[0:Client._BATCH_SIZE]),
+                                   headers=JSON_HEADER))
 
         self.assertEqual(mock_post.call_args_list[1],
-                         mock.call(expected_url, data=test_data[Client._BATCH_SIZE:]))
+                         mock.call(expected_url,
+                                   data=json.dumps(test_data[Client._BATCH_SIZE:]),
+                                   headers=JSON_HEADER))
