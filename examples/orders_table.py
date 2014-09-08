@@ -21,10 +21,8 @@ def sync_order(client, order):
     return client.push_data("orders", [order])[0]
 
 
-# make sure the client is authenticated before we do anything
 if client.authenticate():
     for order in fake_orders:
-        # iterate through users and push data
         response = sync_order(client, order)
         if response.ok:
             print "Synced order with id ", order["id"]

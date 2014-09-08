@@ -7,7 +7,6 @@ API_KEY = 'your_api_key'
 
 client = rjmetrics.client.Client(CLIENT_ID, API_KEY)
 
-# let's define some fake users
 fake_users = [
     {"id": 1, "email": "joe@schmo.com", "acquisition_source": "PPC"},
     {"id": 2, "email": "mike@smith.com", "acquisition_source": "PPC"},
@@ -25,10 +24,8 @@ def sync_user(client, user):
     return client.push_data("users", [user])[0]
 
 
-# make sure the client is authenticated before we do anything
 if client.authenticate():
     for user in fake_users:
-        # iterate through users and push data
         response = sync_user(client, user)
         if response.ok:
             print "Synced user with id ", user["id"]
