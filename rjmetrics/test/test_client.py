@@ -38,30 +38,28 @@ class TestClient(unittest.TestCase):
 
     ## authenticate
 
-    @mock.patch('requests.post')
-    def test_authenticate_succeeds_on_test_data_created(self, mock_post):
-        mock_post.return_value.status_code = 201
+    @mock.patch('requests.get')
+    def test_authenticate_succeeds_on_test_data_created(self, mock_get):
+        mock_get.return_value.status_code = 200
 
         self.assertTrue(self.client.authenticate())
 
-        mock_post.assert_called_once_with(
-            'https://sandbox-connect.rjmetrics.com/v2/'
-            'client/12/table/test/data?apikey=test-api-key',
-            data=json.dumps(Client._AUTH_TEST_DATA),
+        mock_get.assert_called_once_with(
+            'https://connect.rjmetrics.com/v2/'
+            'client/12/authenticate?apikey=test-api-key',
             headers=JSON_HEADER)
 
-    @mock.patch('requests.post')
-    def test_authenticate_fails_on_unauthorized(self, mock_post):
-        mock_post.return_value.status_code = 401
+
+    @mock.patch('requests.get')
+    def test_authenticate_fails_on_unauthorized(self, mock_get):
+        mock_get.return_value.status_code = 401
 
         self.assertFalse(self.client.authenticate())
 
-        mock_post.assert_called_once_with(
-            'https://sandbox-connect.rjmetrics.com/v2/'
-            'client/12/table/test/data?apikey=test-api-key',
-            data=json.dumps(Client._AUTH_TEST_DATA),
+        mock_get.assert_called_once_with(
+            'https://connect.rjmetrics.com/v2/'
+            'client/12/authenticate?apikey=test-api-key',
             headers=JSON_HEADER)
-
 
     ## push_data
 

@@ -56,11 +56,24 @@ class Client(object):
 
     def authenticate(self):
         """
-        Sends a test data point to the sandbox to check API_KEY credentials
-        and returns True if the test data is accepted (False otherwise).
+        Makes a request against the /authenticate endpoint
+        and returns True if the apikey has permission to push data (False otherwise).
         """
-        posts = self.push_data("test", self._AUTH_TEST_DATA, self.SANDBOX_BASE)
-        return (posts[0].status_code == 201)
+        result = self.authenticateWithAPI(self.API_BASE)
+        return (result.status_code == 200)
+
+    def authenticateWithAPI(self, base_url=None):
+        """
+        Checks credentials against the /authenticate endpoint
+        """
+        url = "%s/client/%s/authenticate?apikey=%s" % \
+          (base_url, self.client_id, self.api_key)
+
+        headers = {'Content-Type': 'application/json'}
+        result = requests.get(url, headers=headers)
+
+        return result
+
 
     def push_data(self, table_name, data, base_url=None):
         """
