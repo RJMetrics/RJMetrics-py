@@ -14,7 +14,7 @@ pip install git+git://github.com/RJMetrics/RJMetrics-py.git
 
 ### License
 
-   Copyright 2014 RJMetrics Inc.
+   Copyright 2016 RJMetrics Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
