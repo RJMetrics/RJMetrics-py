@@ -1,6 +1,6 @@
-Python Client (CPython 2.7, 3.4; pypy 2.7) for the RJMetrics Import API
+Python Client (CPython 2.7, 3.5; pypy 2.7) for the RJMetrics Import API
 
-[![Build Status](https://travis-ci.org/g-k/RJMetrics-py.svg?branch=master)](https://travis-ci.org/g-k/RJMetrics-py)
+[![CircleCI](https://circleci.com/gh/RJMetrics/RJMetrics-py.svg?style=svg)](https://circleci.com/gh/RJMetrics/RJMetrics-py)
 
 ### Documentation
 
@@ -14,7 +14,7 @@ pip install git+git://github.com/RJMetrics/RJMetrics-py.git
 
 ### License
 
-   Copyright 2014 RJMetrics Inc.
+   Copyright 2016 RJMetrics Inc.
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
