@@ -1,6 +1,6 @@
 Python Client (CPython 2.7, 3.5; pypy 2.7) for the RJMetrics Import API
 
-[![Build Status](https://travis-ci.org/g-k/RJMetrics-py.svg?branch=master)](https://travis-ci.org/g-k/RJMetrics-py)
+[![CircleCI](https://circleci.com/gh/RJMetrics/RJMetrics-py.svg?style=svg)](https://circleci.com/gh/RJMetrics/RJMetrics-py)
 
 ### Documentation
 
