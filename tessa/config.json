@@ -1,0 +1,17 @@
+{
+  "project_metadata":
+  {
+    "project_name": "RJMetrics-py",
+    "display_name": "RJMetrics-py",
+    "dependency_manager": "pip",
+    "project_version": "1.0",
+    "project_url": "https://github.com/RJMetrics/RJMetrics-py",
+    "project_vendor": "com.adobe.magento.mbi",
+    "project_file": "requirements.txt",
+    "api_env": "TESSA_API_KEY",
+    "subscriber_list": "magento-mbi-engineering@adobe.com",
+    "tessa_env":"prod",
+    "path":"./",
+    "platform":"linux"
+  }
+}
