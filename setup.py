@@ -18,7 +18,7 @@ os.chdir(os.path.abspath(path))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'rjmetrics'))
 from version import VERSION
 
-install_requires = ['requests >= 0.8.8']
+install_requires = ['requests >= 0.8.8','setuptools <= 58.0.0']
 
 # Get simplejson if we don't already have json
 if sys.version_info < (3, 0):
